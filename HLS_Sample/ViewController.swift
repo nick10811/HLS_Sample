@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class ViewController: UIViewController {
 
@@ -34,7 +35,13 @@ class ViewController: UIViewController {
     }
 
     @objc func clickButton(_ sender: UIButton) {
-        // TODO: play HLS video
+        let playerViewController = AVPlayerViewController()
+        let url = "https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_16x9/bipbop_16x9_variant.m3u8"
+        let playItem = AVPlayerItem(url: URL(string: url)!)
+        let player = AVPlayer(playerItem: playItem)
+        playerViewController.player = player
+        self.present(playerViewController, animated: true, completion: nil)
+        player.play()
     }
 
 }
